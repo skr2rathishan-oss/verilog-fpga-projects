@@ -1,0 +1,75 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001b546b660a0 .scope module, "mux_2to1_4bit_tb" "mux_2to1_4bit_tb" 2 3;
+ .timescale -9 -12;
+v000001b546b64030_0 .var "a", 3 0;
+v000001b546b640d0_0 .var "b", 3 0;
+v000001b546b64170_0 .var "sel", 0 0;
+v000001b546b64210_0 .net "y", 3 0, L_000001b546b55bf0;  1 drivers
+S_000001b546b66230 .scope module, "uut" "mux_2to1_4bit" 2 14, 3 1 0, S_000001b546b660a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /INPUT 1 "sel";
+    .port_info 3 /OUTPUT 4 "y";
+L_000001b546b55f00 .functor NOT 4, L_000001b546b642b0, C4<0000>, C4<0000>, C4<0000>;
+L_000001b546b55db0 .functor AND 4, v000001b546b64030_0, L_000001b546b55f00, C4<1111>, C4<1111>;
+L_000001b546b55b80 .functor AND 4, v000001b546b640d0_0, L_000001b546b642b0, C4<1111>, C4<1111>;
+L_000001b546b55bf0 .functor OR 4, L_000001b546b55db0, L_000001b546b55b80, C4<0000>, C4<0000>;
+v000001b546a46e60_0 .net *"_ivl_2", 3 0, L_000001b546b55f00;  1 drivers
+v000001b546a46a90_0 .net *"_ivl_4", 3 0, L_000001b546b55db0;  1 drivers
+v000001b546a4bc90_0 .net *"_ivl_6", 3 0, L_000001b546b55b80;  1 drivers
+v000001b546b663c0_0 .net "a", 3 0, v000001b546b64030_0;  1 drivers
+v000001b546b66460_0 .net "b", 3 0, v000001b546b640d0_0;  1 drivers
+v000001b546b56660_0 .net "sel", 0 0, v000001b546b64170_0;  1 drivers
+v000001b546b56700_0 .net "selbus", 3 0, L_000001b546b642b0;  1 drivers
+v000001b546b63f90_0 .net "y", 3 0, L_000001b546b55bf0;  alias, 1 drivers
+L_000001b546b642b0 .concat [ 1 1 1 1], v000001b546b64170_0, v000001b546b64170_0, v000001b546b64170_0, v000001b546b64170_0;
+    .scope S_000001b546b660a0;
+T_0 ;
+    %vpi_call 2 23 "$monitor", "Time: %0t | a: %b | b: %b | sel: %b | y: %b", $time, v000001b546b64030_0, v000001b546b640d0_0, v000001b546b64170_0, v000001b546b64210_0 {0 0 0};
+    %vpi_call 2 25 "$dumpfile", "sim/mux.vcd" {0 0 0};
+    %vpi_call 2 26 "$dumpvars", 32'sb00000000000000000000000000000000, S_000001b546b660a0 {0 0 0};
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001b546b64030_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001b546b640d0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001b546b64170_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v000001b546b64030_0, 0, 4;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000001b546b640d0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001b546b64170_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001b546b64170_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v000001b546b64030_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001b546b640d0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001b546b64170_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001b546b64170_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 52 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb/mux_2to1_4bit_tb.v";
+    "rtl/mux_2to1_4bit.v";
